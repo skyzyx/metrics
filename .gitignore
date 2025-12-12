@@ -123,3 +123,5 @@ source/app/web/statics/preview
 .test
 source/run/serve/static/app.js
 metrics.config.yml
+# Snyk Security Extension - AI Rules (auto-generated)
+.github/instructions/snyk_rules.instructions.md
