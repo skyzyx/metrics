@@ -16,7 +16,6 @@ RUN chmod +x /metrics/source/app/action/index.mjs
 RUN apt-get update && apt-get install --no-install-recommends -y \
   ca-certificates \
   gnupg \
-  libgconf-2-4 \
   wget \
   && rm -rf /var/lib/apt/lists/*
 
@@ -24,7 +23,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # Based on https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 RUN mkdir -p /etc/apt/keyrings/
 RUN wget -q -O /etc/apt/keyrings/google-chrome.asc https://dl-ssl.google.com/linux/linux_signing_key.pub \
-  && sh -c 'echo "deb [trusted=yes arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.asc] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
+  && sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.asc] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -38,6 +37,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   g++ \
   git \
   google-chrome-stable \
+  libgconf-2-4 \
   libssl-dev \
   libx11-xcb1 \
   libxss1 \
